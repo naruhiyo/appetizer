@@ -18,6 +18,10 @@
 			{
 				"command": "appetizer.helloWorld",
 				"title": "Hello World"
+			},
+			{
+				"command": "appetizer.showImage",
+				"title": "Get and show Image on appetizer"
 			}
 		]
 	},
@@ -29,8 +33,7 @@
 		"test-compile": "tsc -p ./",
 		"test-watch": "tsc -watch -p ./",
 		"pretest": "npm run test-compile && npm run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
+		"lint": "eslint src --ext ts"
 	},
 	"devDependencies": {
 		"@types/vscode": "^1.52.0",
@@ -47,5 +50,8 @@
 		"ts-loader": "^8.0.11",
 		"webpack": "^5.10.0",
 		"webpack-cli": "^4.2.0"
+	},
+	"dependencies": {
+		"slash": "^3.0.0"
 	}
 }
