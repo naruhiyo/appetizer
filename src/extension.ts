@@ -1,16 +1,16 @@
 import * as vscode from 'vscode';
-import HelloWorld from './commands/HelloWorld';
+import * as commands from './commands';
 
 // 拡張機能が有効になったら実行される
 export function activate(context: vscode.ExtensionContext) {
 	// コマンドを登録する
 	// * コマンドは package.json に記載する必要がある
-	const disposable: { dispose: any }[] = [
-		HelloWorld
+	const disposables: { dispose: any }[] = [
+		commands.helloWorld(context),
 	];
 
 	context.subscriptions.concat(
-		disposable
+		disposables
 	);
 }
 
