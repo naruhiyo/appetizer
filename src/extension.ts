@@ -1,27 +1,18 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import HelloWorld from './commands/HelloWorld';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+// 拡張機能が有効になったら実行される
 export function activate(context: vscode.ExtensionContext) {
+	// コマンドを登録する
+	// * コマンドは package.json に記載する必要がある
+	const disposable: { dispose: any }[] = [
+		HelloWorld
+	];
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "appetizer" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('appetizer.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from appetizer!');
-	});
-
-	context.subscriptions.push(disposable);
+	context.subscriptions.concat(
+		disposable
+	);
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }
