@@ -2,21 +2,33 @@ import * as vscode from 'vscode';
 import { readFileSync } from 'fs';
 import * as path from 'path';
 
-function getHtmlForWebview(context: vscode.ExtensionContext) {
-  const loadImagePath = path.resolve(__dirname, 'sample.jpg');
-  let imageConfig = {
-    extension: `image/jpeg`
-  };
-  let sampleImage = null;
+interface ImageConfig {
+  format: string;
+  extension: string;
+  image: string | null;
+  createDataURL(): string;
+}
+
+function getImageConfig(path: string): ImageConfig {
+  let imageResouce: string | null = null;
   try {
-    sampleImage = readFileSync(
-      loadImagePath, 'base64'
+    imageResouce = readFileSync(
+      path, 'base64'
     );
   } catch(e) {
     console.log('error', e);
   }
-  
-  console.log(`data:${imageConfig.extension},base64,${sampleImage}`);
+
+  const ext = path.split('.').slice(-1)[0];
+  return {
+    format: 'base64',
+    extension: ext,
+    image: imageResouce,
+    createDataURL: () => `data:image/${ext};base64,${imageResouce}`
+  };
+}
+
+function getHTML(imageConfig: ImageConfig): string {
   return `<!DOCTYPE html>
             <html lang="en">
             <head>
@@ -25,29 +37,31 @@ function getHtmlForWebview(context: vscode.ExtensionContext) {
                 <title>Cat Coding</title>
             </head>
             <body>
-              <img src="data:${imageConfig.extension};base64,${sampleImage}" alt="sample-img"/>
+              <img src="${imageConfig.createDataURL()}" alt="sample-img"/>
             </body>
             </html>`;
 }
 
-function createPanel(context: vscode.ExtensionContext) {
-  const panel = vscode.window.createWebviewPanel(
+function createPanel() {
+  return vscode.window.createWebviewPanel(
     'showImage',
     'Sample Image Viewer',
     vscode.ViewColumn.One,
     {
       // Enable javascript in the webview
       enableScripts: true,
-
       // And restrict the webview to only loading content from our extension's `media` directory.
       localResourceRoots: [],
     }
   );
-  panel.webview.html = getHtmlForWebview(context);
 }
 
 export function showImage(c: vscode.ExtensionContext): { dispose: any } {
   return vscode.commands.registerCommand('appetizer.showImage', () => {
-    createPanel(c);
+    const imagePath = path.resolve(__dirname, 'sample.jpg');
+    const imageConfig = getImageConfig(imagePath);
+    const html:string = getHTML(imageConfig);
+    const panel = createPanel();
+    panel.webview.html = html;
   });
 }
