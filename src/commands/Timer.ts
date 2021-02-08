@@ -1,19 +1,30 @@
 import * as vscode from 'vscode';
 
-function getCurrentTime(): string {
-  const date = new Date();
-  const year = date.getFullYear()
-  const month = date.getMonth()
-  const day = date.getDay()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-  return `${year}/${month}/${day} ${hour}:${minute}:${second}`
+type dateTime = {
+  year: number
+  month: number
+  date: number
+  hour: number
+  minute: number
+  second: number
+}
+
+function getCurrentTime(): dateTime {
+  const date: Date = new Date();
+  const currentTime: dateTime = {
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+    date: date.getDate(),
+    hour: date.getHours(),
+    minute: date.getMinutes(),
+    second: date.getSeconds()
+  }
+  return currentTime
 }
 
 export function showCurrentTime(c: vscode.ExtensionContext): { dispose: any } {
   return vscode.commands.registerCommand('appetizer.showCurrentTime', () => {
-    const currentTime = getCurrentTime()
-    vscode.window.showInformationMessage('Now: ' + currentTime);
+    const currentTime: dateTime = getCurrentTime()
+    vscode.window.showInformationMessage(`Now: ${currentTime.year}/${currentTime.month}/${currentTime.date} ${currentTime.hour}:${currentTime.minute}:${currentTime.second}`);
   });
 }
