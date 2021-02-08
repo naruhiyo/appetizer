@@ -7,6 +7,7 @@ export function activate(context: vscode.ExtensionContext) {
 	// * コマンドは package.json に記載する必要がある
 	const disposables: { dispose: any }[] = [
 		commands.helloWorld(context),
+		commands.showCurrentTime(context),
 	];
 
 	context.subscriptions.concat(

@@ -18,6 +18,10 @@
 			{
 				"command": "appetizer.helloWorld",
 				"title": "Hello World"
+			},
+			{
+				"command": "appetizer.showCurrentTime",
+				"title": "Show current time"
 			}
 		]
 	},
