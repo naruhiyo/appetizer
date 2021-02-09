@@ -21,7 +21,11 @@
 			},
 			{
 				"command": "appetizer.showImage",
-				"title": "Get and show Image on appetizer"
+        "title": "Get and show Image on appetizer"
+      },
+      {
+				"command": "appetizer.showCurrentTime",
+				"title": "Show current time"
 			}
 		]
 	},
