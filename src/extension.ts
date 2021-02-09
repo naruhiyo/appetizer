@@ -6,7 +6,8 @@ export function activate(context: vscode.ExtensionContext) {
 	// コマンドを登録する
 	// * コマンドは package.json に記載する必要がある
 	const disposables: { dispose: any }[] = [
-		commands.helloWorld(context),
+		commands.showImage(context),
+		commands.helloWorld(context),	
 	];
 
 	context.subscriptions.concat(
@@ -14,5 +15,5 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 }
 
-// this method is called when your extension is deactivated
+// this method is called when	 your extension is deactivated
 export function deactivate() { }
