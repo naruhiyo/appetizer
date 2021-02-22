@@ -1,6 +1,6 @@
 
 import * as vscode from 'vscode';
-const schedule = require('node-schedule');
+import * as schedule from 'node-schedule';
 
 type dateTime = {
   year: number
