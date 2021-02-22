@@ -1,5 +1,6 @@
 
 import * as vscode from 'vscode';
+import * as schedule from 'node-schedule';
 
 type dateTime = {
   year: number
@@ -22,6 +23,13 @@ function getCurrentTime(): dateTime {
   }
   return currentTime
 }
+
+// Schedule every 15:00 and 21:00
+const cronStyleSchedule = '0 15,21 * * *';
+
+const job = schedule.scheduleJob(cronStyleSchedule, function(){
+  vscode.window.showInformationMessage("It's time!");
+});
 
 export function showCurrentTime(c: vscode.ExtensionContext): { dispose: any } {
   return vscode.commands.registerCommand('appetizer.showCurrentTime', () => {
