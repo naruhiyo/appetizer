@@ -57,11 +57,14 @@ function createPanel() {
 }
 
 export function showImage(c: vscode.ExtensionContext): { dispose: any } {
-  return vscode.commands.registerCommand('appetizer.showImage', () => {
-    const imagePath = path.resolve(__dirname, 'sample.jpg');
-    const imageConfig = getImageConfig(imagePath);
-    const html:string = getHTML(imageConfig);
-    const panel = createPanel();
-    panel.webview.html = html;
+  return vscode.commands.registerCommand('appetizer.showImage', async () => {
+    const selection = await vscode.window.showInformationMessage('Hello World from appetizer!', 'Popup Dish!');
+    if (selection === 'Popup Dish!') {
+      const imagePath = path.resolve(__dirname, 'sample.jpg');
+      const imageConfig = getImageConfig(imagePath);
+      const html:string = getHTML(imageConfig);
+      const panel = createPanel();
+      panel.webview.html = html;
+    }
   });
 }

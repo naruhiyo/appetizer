@@ -9,6 +9,7 @@ export function activate(context: vscode.ExtensionContext) {
 		commands.showImage(context),
 		commands.showCurrentTime(context),
 		commands.helloWorld(context),	
+		commands.configurationManager(context),
 	];
 
 	context.subscriptions.concat(

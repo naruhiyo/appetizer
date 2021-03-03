@@ -10,24 +10,43 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:appetizer.helloWorld"
+		"onCommand:appetizer.helloWorld",
+		"onCommand:appetizer.showImage"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "appetizer.helloWorld",
-				"title": "Hello World"
+				"title": "Hello World",
+				"category": "test"
 			},
 			{
 				"command": "appetizer.showImage",
-				"title": "Get and show Image on appetizer"
+				"title": "Get and show Image on appetizer",
+				"category": "test"
 			},
 			{
 				"command": "appetizer.showCurrentTime",
-				"title": "Show current time"
+				"title": "Show current time",
+				"category": "test"
+			},
+			{
+				"command": "appetizer.readConfig",
+				"title": "Read config",
+				"category": "test"
 			}
-		]
+		],
+		"menus": {
+			"editor/title": [{
+				"command": "appetizer.helloWorld",
+				"group": "navigation"
+			}],
+			"editor/context": [{
+				"command": "appetizer.helloWorld",
+				"group": "navigation"
+			}]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run package",
