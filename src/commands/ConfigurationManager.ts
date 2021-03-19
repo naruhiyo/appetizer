@@ -1,10 +1,12 @@
 import * as vscode from 'vscode';
 
 export function configurationManager(c: vscode.ExtensionContext): { dispose: any } {
-  const apiKeyConf = vscode.workspace.getConfiguration('appetizerConf.apiKey');
-  const generalConf = vscode.workspace.getConfiguration('appetizerConf.general');
 
   return vscode.commands.registerCommand('appetizer.readConfig', async () => {
+    // read config
+    const apiKeyConf = vscode.workspace.getConfiguration('appetizerConf.apiKey');
+    const generalConf = vscode.workspace.getConfiguration('appetizerConf.general');
+
     vscode.window.showInformationMessage(`hotpepperApiKey: ${apiKeyConf.get('hotpepperApiKey')}`);
 
     const lat: number | undefined = generalConf.get('lat');
