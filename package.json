@@ -45,6 +45,33 @@
 				"command": "appetizer.helloWorld",
 				"group": "navigation"
 			}]
+		},
+		"configuration": {
+			"type": "object",
+      "title": "appetizerConfiguration",
+      "properties": {
+        "appetizerConf.apiKey": {
+          "type": "object",
+          "default": {
+            "hotpepperApiKey": null
+					},
+          "description": "API Keys"
+        },
+        "appetizerConf.general": {
+          "type": "object",
+          "default": {
+            "nearStation": "Sample Station!!",
+						"lat": 0.0,
+						"lng": 0.0,
+            "priceRange": [
+							0,
+							1000
+						],
+						"searchStoreRange": 5
+          },
+          "description": "User extension"
+        }
+      }
 		}
 	},
 	"scripts": {
