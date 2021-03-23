@@ -10,8 +10,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:appetizer.helloWorld",
-		"onCommand:appetizer.showImage"
+		"onStartupFinished"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
