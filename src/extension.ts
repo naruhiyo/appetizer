@@ -11,6 +11,7 @@ export function activate(context: vscode.ExtensionContext) {
 		commands.helloWorld(context),	
 		commands.configurationManager(context),
 		commands.searchGoogle(context),
+		commands.searchHotpepper(context),
 	];
 
   context.subscriptions.concat(

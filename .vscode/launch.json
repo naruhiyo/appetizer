@@ -29,6 +29,12 @@
         "${workspaceFolder}/out/test/**/*.js"
       ],
       "preLaunchTask": "npm: test-watch"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch program in node.js",
+      "console": "integratedTerminal"
     }
   ]
 }

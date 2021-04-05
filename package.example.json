@@ -39,6 +39,11 @@
         "command": "appetizer.searchGoogle",
         "title": "Search Test Google",
         "category": "test"
+      },
+      {
+        "command": "appetizer.searchHotpepper",
+        "title": "Search Test Hot Pepper",
+        "category": "test"
       }
     ],
     "menus": {
