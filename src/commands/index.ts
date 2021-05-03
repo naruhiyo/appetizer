@@ -4,6 +4,7 @@ import { showImage } from './ShowImage';
 import { configurationManager } from './ConfigurationManager';
 import { searchGoogle } from './GoogleSearch';
 import { searchHotpepper } from './HotpepperSearch';
+import { showAppetizer } from './ShowAppetizer';
 
 export {
   helloWorld,
@@ -11,5 +12,6 @@ export {
   showImage,
   configurationManager,
   searchGoogle,
-  searchHotpepper
+  searchHotpepper,
+  showAppetizer,
 };

@@ -1,0 +1,81 @@
+body {
+  // 初期化
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  color: #393939;
+  // footerを一番下に固定
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+#header {
+  text-align: center;
+}
+
+#main {
+  // レイアウト
+  padding: 16px;
+
+  // flexbox基本設定
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  .appetizer-field {
+    // コンテンツ間の余白
+    // 一行に配置する最大アイテム数は 4
+    $base-margin: 16px;
+    flex-basis: calc((100% - ($base-margin * 2)) / 4);
+    max-width: calc((100% - ($base-margin * 2)) / 4);
+    margin: 0 $base-margin;
+  }
+
+  // カードレイアウト
+  .card {
+    background: #fcfcfc;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+
+    $base-padding: 8px;
+    &:hover {
+      opacity: 0.8;
+    }
+
+    .card-img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card-title {
+      font-weight: bold;
+      padding: $base-padding;
+    }
+
+    .card-body {
+      padding: $base-padding;
+      font-size: medium;
+    }
+
+    .card-footer {
+      padding: $base-padding;
+      font-size: medium;
+      text-align: right;
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+#footer {
+  text-align: center;
+}

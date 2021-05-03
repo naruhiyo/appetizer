@@ -9,3 +9,14 @@
 ## Develop Environment
 - Node.js v14.15.4
 - npm v6.14.10
+
+## Use API
+
+- Hotpepper
+
+    Food Pictures: 【画像提供：ホットペッパー グルメ】
+    Powered by [ホットペッパー Webサービス](http://webservice.recruit.co.jp/)
+
+- HeartRails Express
+
+    Powered by [HeartRails Express](http://express.heartrails.com/)

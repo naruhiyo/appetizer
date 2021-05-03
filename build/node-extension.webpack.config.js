@@ -34,6 +34,18 @@ const config = {
             loader: 'ts-loader'
           }
         ]
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          "raw-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
+        ],
       }
     ]
   }

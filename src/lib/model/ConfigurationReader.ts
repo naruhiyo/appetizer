@@ -6,10 +6,12 @@ import{ WorkspaceConfiguration, workspace } from 'vscode';
 export class ConfigurationReader {
   private apiKeyConf: WorkspaceConfiguration;
   private generalConf: WorkspaceConfiguration;
+  private  scheduleConf: WorkspaceConfiguration;
 
   constructor () {
     this.apiKeyConf = workspace.getConfiguration('appetizerConf.apiKey');
     this.generalConf = workspace.getConfiguration('appetizerConf.general');
+    this.scheduleConf = workspace.getConfiguration('appetizerConf.schedule');
   }
 
   getApiKeyConf () : WorkspaceConfiguration {
@@ -18,5 +20,9 @@ export class ConfigurationReader {
 
   getGeneralConf () : WorkspaceConfiguration {
     return this.generalConf;
+  }
+
+  getScheduleConf () : WorkspaceConfiguration {
+    return this.scheduleConf;
   }
 }
