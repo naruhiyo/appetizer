@@ -21,6 +21,7 @@ export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
   appetizerView.buildHtml();
 
   const params: HotpepperApiForm = {
+    budget: "B001",
     lat: 35.6198513,
     lng: 139.7281892,
   };

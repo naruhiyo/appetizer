@@ -28,12 +28,16 @@ export class HotpepperApi {
         },
       });
 
+<<<<<<< HEAD
       if (response.data === null) {
         return null;
       }
 
       // create response model
       return HotpepperShopImpl.newFromApiResponse(response.data);
+=======
+      return response.data.results.shop;
+>>>>>>> 7222837 (Filter by budget)
     } catch (error) {
       console.log(error);
       return null;
