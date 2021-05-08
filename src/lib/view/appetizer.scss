@@ -23,14 +23,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  flex-wrap: wrap;
 
   .appetizer-field {
     // コンテンツ間の余白
     // 一行に配置する最大アイテム数は 4
     $base-margin: 16px;
     flex-basis: calc((100% - ($base-margin * 2)) / 4);
-    max-width: calc((100% - ($base-margin * 2)) / 4);
-    margin: 0 $base-margin;
+    width: calc((100% - ($base-margin * 2)) / 4);
+    margin: $base-margin;
   }
 
   // カードレイアウト
@@ -38,12 +39,10 @@ body {
     background: #fcfcfc;
     border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
 
+    $base-margin: 8px;
     $base-padding: 8px;
-    &:hover {
-      opacity: 0.8;
-    }
 
     .card-img {
       width: 100%;
@@ -51,22 +50,51 @@ body {
     }
 
     .card-title {
-      font-weight: bold;
       padding: $base-padding;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      span {
+        display: inline-block;
+
+        &.shop-genre {
+          font-weight: bold;
+        }
+
+        &.shop-budge-badge {
+          font-size: x-small;
+          color: rgba(178, 34, 34, 1);
+          padding: $base-padding / 2;
+        }
+      }
     }
 
     .card-body {
       padding: $base-padding;
-      font-size: medium;
+
+      span {
+        display: inline-block;
+
+        &.shop-name {
+          font-size: medium;
+        }
+      }
     }
 
     .card-footer {
+      margin: $base-margin;
       padding: $base-padding;
-      font-size: medium;
-      text-align: right;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
 
       a {
+        padding: $base-padding;
+        background: rgba(30, 144, 255, 1);
+        color: white;
         text-decoration: none;
+        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 
         &:hover {
           text-decoration: underline;

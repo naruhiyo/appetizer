@@ -1,7 +1,5 @@
-import { URL, URLSearchParams } from "url";
-import { ApiKeyImpl, ApiKey } from "../model/ApiKeyModel";
+import { ApiKeyImpl } from "../model/ApiKeyModel";
 import axios from "axios";
-import * as vscode from "vscode";
 import { GooglePlaceApiForm } from "./GoogleApiForm";
 
 export class GoogleApi {

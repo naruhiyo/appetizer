@@ -20,7 +20,7 @@ export class GeneralConfigImpl {
 
   constructor () {
     const configurationReader: ConfigurationReader = new ConfigurationReader();
-    this.generalConf = configurationReader.getApiKeyConf();
+    this.generalConf = configurationReader.getGeneralConf();
   }
 
   getGeneralConf () : GeneralConfig {
