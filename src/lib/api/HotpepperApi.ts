@@ -15,9 +15,7 @@ export class HotpepperApi {
     this.apiKey = apiKeyImpl.getHotpepperApiKey() as string;
   }
 
-  async searchShops(
-    hotpepperApiParams: HotpepperApiForm
-  ): Promise<HotpepperShopImpl | null> {
+  private async searchShop(hotpepperApiParams: HotpepperApiForm): Promise<Object | null> {
     // execute api
     try {
       const response = await axios.get(this.HOTPEPPER_API_ENDPOINT, {
@@ -28,16 +26,30 @@ export class HotpepperApi {
         },
       });
 
-<<<<<<< HEAD
-      if (response.data === null) {
-        return null;
-      }
-
-      // create response model
-      return HotpepperShopImpl.newFromApiResponse(response.data);
-=======
       return response.data.results.shop;
->>>>>>> 7222837 (Filter by budget)
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
+
+  async searchShops(hotpepperApiParamsList: Array<HotpepperApiForm>): Promise<Object | null> {
+    // execute api
+    try {
+      let responseData = Promise.all(hotpepperApiParamsList.map(param => this.searchShop(param)));
+
+        // TODO: Hotpepper APIを採用していく場合は型を用意してレスポンスを解析する
+      let selectedShops = responseData.then(responses => {
+          let nestedResponses: Array<any> = Array.from(responses);
+          let flattenedResponses = [].concat.apply([],nestedResponses);
+          console.log('Num of all response data:', flattenedResponses.length);
+          const selectedNum = 4;
+          const selectedResponses = [...Array(selectedNum)].map(() =>
+            flattenedResponses.splice(Math.floor(Math.random() * flattenedResponses.length), 1)[0]);
+          console.log('Num of selected data:', selectedResponses.length);
+          return selectedResponses;
+        });
+      return selectedShops;
     } catch (error) {
       console.log(error);
       return null;

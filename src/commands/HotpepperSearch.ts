@@ -30,16 +30,11 @@ export function searchHotpepper(c: vscode.ExtensionContext): { dispose: any } {
     let hotpepperApiFormImpl = HotpepperApiFormImpl.newFromConfig(priceMin, priceMax, lat, lng);
 
     // API call
-    let responseData = Promise.all(hotpepperApiFormImpl.getApiForm().map(param => hotpepperApi.searchShops(param)));
+    let responseData = await hotpepperApi.searchShops(hotpepperApiFormImpl.getApiForm());
 
     if (responseData !== null) {
-      // TODO: Hotpepper APIを採用していく場合は型を用意してレスポンスを解析する
-      responseData.then(responses => {
-        let nestedResponses: Array<any> = Array.from(responses);
-        let flattenedResponses = [].concat.apply([],nestedResponses);
-        console.log(flattenedResponses);
-        vscode.window.showInformationMessage(flattenedResponses.toString());
-      })
+      vscode.window.showInformationMessage('get shops');
+      console.log(responseData);
     } else {
       vscode.window.showInformationMessage('API error');
     }
