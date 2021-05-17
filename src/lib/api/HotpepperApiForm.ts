@@ -19,7 +19,7 @@ type Budget = {
  * code: 検索用ディナー予算コード
  * floor: 下限金額（含む）
  * cap: 上限金額（含む）
- *  */
+ */
 const BudgetList: Array<Budget> = [
   {
     code: "B009",
