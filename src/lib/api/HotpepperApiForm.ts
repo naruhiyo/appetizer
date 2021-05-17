@@ -5,6 +5,7 @@ export type HotpepperApiForm = {
   budget: string | null | undefined,
   lat: number | null | undefined,
   lng: number | null | undefined,
+  count: number,
 };
 
 type Budget = {
@@ -104,11 +105,15 @@ export class HotpepperApiFormImpl {
     const matchedBudget = BudgetList.filter(budget => {
       return budgetMin <= budget.cap && budget.floor <= budgetMax;
     });
+    console.log('matchedBudget:', matchedBudget);
+    const countMax = 100;
+    const count = Math.floor(countMax / matchedBudget.length);
     hotpepperApiFormImpl.apiForm = matchedBudget.map(budget => {
       return {
         budget: budget.code,
         lat: lat,
         lng: lng,
+        count: count,
       }
     });
     return hotpepperApiFormImpl;
