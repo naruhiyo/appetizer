@@ -13,6 +13,12 @@ type Budget = {
   cap: number,
 }
 
+/**
+ * 検索用ディナー予算マスタAPIを叩いて取得した情報
+ * code: 検索用ディナー予算コード
+ * floor: 下限金額（含む）
+ * cap: 上限金額（含む）
+ *  */
 const BudgetList: Array<Budget> = [
   {
     code: "B009",
