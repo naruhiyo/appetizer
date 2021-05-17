@@ -14,7 +14,20 @@ export function searchHotpepper(c: vscode.ExtensionContext): { dispose: any } {
     const generalConf: GeneralConfig = generalConfigImpl.getGeneralConf();
 
     // parameter 作成
-    let hotpepperApiFormImpl = HotpepperApiFormImpl.newFromConfig(1200, 2500, 35.6198513, 139.7281892)
+    const priceRange = generalConf.priceRange?.sort();
+    const priceMin = priceRange === undefined ? 0 : priceRange[0];
+    const priceMax = priceRange === undefined ? 0 : priceRange[1];
+    let lat = generalConf.latLng.lat;
+    let lng = generalConf.latLng.lng;
+    if (lat === undefined || lat === null) {
+      vscode.window.showInformationMessage('please set lat');
+      return;
+    }
+    if (lng === undefined || lng === null) {
+      vscode.window.showInformationMessage('please set lng');
+      return;
+    }
+    let hotpepperApiFormImpl = HotpepperApiFormImpl.newFromConfig(priceMin, priceMax, lat, lng);
 
     // API call
     let responseData = Promise.all(hotpepperApiFormImpl.getApiForm().map(param => hotpepperApi.searchShops(param)));
