@@ -3,8 +3,8 @@
 'use strict';
 
 const path = require('path');
+const copyWebpackPlugin = require('copy-webpack-plugin');
 
-/**@type {import('webpack').Configuration}*/
 const config = {
   target: 'node', // vscode extensions run in a Node.js-context 📖 -> https://webpack.js.org/configuration/node/
   mode: 'none', // this leaves the source code as close as possible to the original (when packaging we set this to 'production')
@@ -48,6 +48,17 @@ const config = {
         ],
       }
     ]
-  }
+  },
+  plugins: [
+    new copyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '..', '\.env'),
+          to: path.resolve(__dirname, '../dist'),
+          toType: 'dir'
+        },
+      ]
+    }),
+  ]
 };
 module.exports = config;

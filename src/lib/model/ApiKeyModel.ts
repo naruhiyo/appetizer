@@ -1,25 +1,26 @@
-import { WorkspaceConfiguration } from 'vscode';
-import { ConfigurationReader } from './ConfigurationReader';
-
+import { resolve } from "path";
+import { config } from "dotenv";
 // 型
-export type ApiKey = string | null | undefined;
+export type ApiKey = string | undefined;
 
 /**
  * ApiKeyのデータモデル
  */
 export class ApiKeyImpl {
-  private apiKeyConf: WorkspaceConfiguration;
-
   constructor () {
-    const configurationReader: ConfigurationReader = new ConfigurationReader();
-    this.apiKeyConf = configurationReader.getApiKeyConf();
+    // .envの読み込み
+    const result = config({ path: resolve(__dirname, ".env") });
+
+    if (result.error) {
+      throw result.error;
+    }
   }
 
   getHotpepperApiKey () : ApiKey {
-    return this.apiKeyConf.get('hotpepperApiKey');
+    return process.env.HOTPEPPER_API_KEY;
   }
 
   getGoogleApiKey () : ApiKey {
-    return this.apiKeyConf.get('googleApiKey');
+    return process.env.GOOGLE_API_KEY;
   }
 }

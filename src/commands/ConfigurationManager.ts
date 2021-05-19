@@ -11,11 +11,12 @@ export function configurationManager(c: vscode.ExtensionContext): { dispose: any
 
     const lat: number | undefined = generalConf.get('lat');
     const lng: number | undefined = generalConf.get('lng');
-    const priceRange: number[] | undefined = generalConf.get('priceRange');
+    const minPrice: number | undefined = generalConf.get('minPrice');
+    const maxPrice: number | undefined = generalConf.get('maxPrice');
     const generalConfInfo = `
       nearStation: ${generalConf.get('nearStation')},
       latLng: ${lat},${lng},
-      priceRange: ${priceRange?.join(',')},
+      priceRange: ${minPrice} ~ ${maxPrice},
       searchStoreRange: ${generalConf.get('searchStoreRange')}
     `;
     vscode.window.showInformationMessage(generalConfInfo);

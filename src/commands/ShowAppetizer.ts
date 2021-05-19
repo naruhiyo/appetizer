@@ -1,17 +1,20 @@
-import * as vscode from 'vscode';
-import { scheduleJob } from 'node-schedule';
-import { HungryTime, HungryTimeImpl, HotpepperApiForm, HotpepperApi, AppetizerView, HotpepperShopImpl } from '../lib';
-
+import * as vscode from "vscode";
+import { scheduleJob } from "node-schedule";
+import {
+  HungryTime,
+  HungryTimeImpl,
+  HotpepperApiForm,
+  HotpepperApi,
+  AppetizerView,
+} from "../lib";
 
 export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
-  const APPETIZER_BUTTON = 'Yes!';
-  const WELLCOME_MESSAGE = 'An appetizer has come! Am I hungry?';
-  const NEXT_TIME = 'See you next time.';
-  const API_ERROR = 'Sorry, I don\'t get appetizer.';
+  const APPETIZER_BUTTON = "Yes!";
+  const WELLCOME_MESSAGE = "An appetizer has come! Am I hungry?";
+  const NEXT_TIME = "See you next time.";
 
   // get config
-  const hungryTimeImpl: HungryTimeImpl = new HungryTimeImpl();
-  const hungryTime: HungryTime = hungryTimeImpl.getHungryTime();
+  const hungryTime: HungryTime = HungryTimeImpl.getHungryTime();
 
   // get view
   const appetizerView: AppetizerView = new AppetizerView();
@@ -27,21 +30,21 @@ export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
 
   // set timer
   scheduleJob(hungryTime!, async () => {
-    const selection = await vscode.window.showInformationMessage(WELLCOME_MESSAGE, APPETIZER_BUTTON);
-
     // API call
     // const responseData: Object | null = await hotpepperApi.searchShops(params);
 
-    // create response model
-    // const hotpepperShopImpl: HotpepperShopImpl = HotpepperShopImpl.newFromApiResponse(responseData);
+    // if (responseData === null) {
+    //   return;
+    // }
+
+    const selection = await vscode.window.showInformationMessage(
+      WELLCOME_MESSAGE,
+      APPETIZER_BUTTON
+    );
 
     if (selection !== APPETIZER_BUTTON) {
       return vscode.window.showInformationMessage(NEXT_TIME);
     }
-
-    // if (responseData === null) {
-    //   return vscode.window.showErrorMessage(API_ERROR);
-    // }
 
     const hoge: any = {};
     // create component
@@ -53,6 +56,6 @@ export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
 
   // 何も返さない
   return {
-    dispose: null
+    dispose: null,
   };
 }
