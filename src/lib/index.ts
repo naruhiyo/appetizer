@@ -6,7 +6,10 @@ import { GoogleApi } from "./api/GoogleApi";
 import { GooglePlaceApiForm } from "./api/GoogleApiForm";
 import { HotpepperApi } from "./api/HotpepperApi";
 import { HotpepperApiForm } from "./api/HotpepperApiForm";
+import { HeartRailsExpressApi } from "./api/HeartRailsExpressApi";
+import { HeartRailsExpressForm } from "./api/HeartRailsExpressForm";
 import { AppetizerView } from './view/AppetizerView';
+import { AppetizerService } from "./service/AppetizerService";
 
 export {
   ApiKeyImpl,
@@ -21,5 +24,8 @@ export {
   HotpepperShop,
   HotpepperShopImpl,
   HotpepperApi,
-  HotpepperApiForm
+  HotpepperApiForm,
+  HeartRailsExpressApi,
+  HeartRailsExpressForm,
+  AppetizerService
 };

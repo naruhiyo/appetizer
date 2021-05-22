@@ -3,13 +3,15 @@ import { ConfigurationReader } from './ConfigurationReader';
 
 // 型
 export type GeneralConfig = {
-  nearStation: string | null | undefined;
+  prefecture: string;
+  nearStation: string;
   latLng: {
-    lat: number | null | undefined;
-    lng: number | null | undefined;
+    lat: number;
+    lng: number;
   }
-  priceRange: number[] | null | undefined;
-  searchStoreRange: number | null | undefined;
+  minPrice: number;
+  maxPrice: number;
+  searchStoreRange: number;
 };
 
 /**
@@ -24,16 +26,16 @@ export class GeneralConfigImpl {
   }
 
   getGeneralConf () : GeneralConfig {
-    const priceRange: GeneralConfig['priceRange'] = this.generalConf.get('priceRange');
-
     return {
-      nearStation: this.generalConf.get('nearStation'),
+      prefecture: this.generalConf.get('prefecture')!,
+      nearStation: this.generalConf.get('nearStation')!,
       latLng: {
-        lat: this.generalConf.get('lat'),
-        lng: this.generalConf.get('lng'),
+        lat: this.generalConf.get('lat')!,
+        lng: this.generalConf.get('lng')!,
       },
-      priceRange: priceRange,
-      searchStoreRange: this.generalConf.get('searchStoreRange')
+      minPrice: this.generalConf.get('minPrice')!,
+      maxPrice: this.generalConf.get('maxPrice')!,
+      searchStoreRange: this.generalConf.get('searchStoreRange')!
     };
   }
 }

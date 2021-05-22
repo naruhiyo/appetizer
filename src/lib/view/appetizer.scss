@@ -27,10 +27,8 @@ body {
 
   .appetizer-field {
     // コンテンツ間の余白
-    // 一行に配置する最大アイテム数は 4
     $base-margin: 16px;
-    flex-basis: calc((100% - ($base-margin * 2)) / 4);
-    width: calc((100% - ($base-margin * 2)) / 4);
+    width: 240px;
     margin: $base-margin;
   }
 
@@ -46,7 +44,11 @@ body {
 
     .card-img {
       width: 100%;
-      height: auto;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     .card-title {
