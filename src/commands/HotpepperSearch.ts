@@ -1,7 +1,6 @@
 import * as vscode from 'vscode';
 import { HotpepperApi } from '../lib/api/HotpepperApi';
 import { HotpepperApiForm, HotpepperApiFormImpl } from '../lib/api/HotpepperApiForm';
-import { GeneralConfigImpl, GeneralConfig } from '../lib';
 import { HotpepperShopResponseListImpl } from "../lib/model/HotpepperShopResponseList";
 
 export function searchHotpepper(c: vscode.ExtensionContext): { dispose: any } {
@@ -9,25 +8,7 @@ export function searchHotpepper(c: vscode.ExtensionContext): { dispose: any } {
   const hotpepperApi: HotpepperApi = new HotpepperApi();
 
   return vscode.commands.registerCommand('appetizer.searchHotpepper', async () => {
-    // config
-    const generalConfigImpl: GeneralConfigImpl = new GeneralConfigImpl();
-    const generalConf: GeneralConfig = generalConfigImpl.getGeneralConf();
-
-    // parameter 作成
-    const priceRange = generalConf.priceRange?.sort();
-    const priceMin = priceRange === undefined ? 0 : priceRange[0];
-    const priceMax = priceRange === undefined ? priceMin : priceRange[1];
-    let lat = generalConf.latLng.lat;
-    let lng = generalConf.latLng.lng;
-    if (lat === undefined || lat === null) {
-      vscode.window.showInformationMessage('please set lat');
-      return;
-    }
-    if (lng === undefined || lng === null) {
-      vscode.window.showInformationMessage('please set lng');
-      return;
-    }
-    const hotpepperApiFormImpl = HotpepperApiFormImpl.newFromConfig(priceMin, priceMax, lat, lng);
+    const hotpepperApiFormImpl = HotpepperApiFormImpl.newFromConfig();
 
     // API call
     const hotpepperApiParamsList = hotpepperApiFormImpl.toApi();
