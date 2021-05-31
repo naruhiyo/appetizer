@@ -16,7 +16,7 @@ export function searchHotpepper(c: vscode.ExtensionContext): { dispose: any } {
     // parameter 作成
     const priceRange = generalConf.priceRange?.sort();
     const priceMin = priceRange === undefined ? 0 : priceRange[0];
-    const priceMax = priceRange === undefined ? 0 : priceRange[1];
+    const priceMax = priceRange === undefined ? priceMin : priceRange[1];
     let lat = generalConf.latLng.lat;
     let lng = generalConf.latLng.lng;
     if (lat === undefined || lat === null) {
