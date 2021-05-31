@@ -3,6 +3,7 @@ import { HotpepperApi } from '../lib/api/HotpepperApi';
 import { HotpepperApiForm, HotpepperApiFormImpl } from '../lib/api/HotpepperApiForm';
 import { GeneralConfigImpl, GeneralConfig } from '../lib';
 import { prependListener } from 'process';
+import { HotpepperShopResponseListImpl } from "../lib/model/HotpepperShopResponseList";
 
 export function searchHotpepper(c: vscode.ExtensionContext): { dispose: any } {
   // api
@@ -27,14 +28,17 @@ export function searchHotpepper(c: vscode.ExtensionContext): { dispose: any } {
       vscode.window.showInformationMessage('please set lng');
       return;
     }
-    let hotpepperApiFormImpl = HotpepperApiFormImpl.newFromConfig(priceMin, priceMax, lat, lng);
+    const hotpepperApiFormImpl = HotpepperApiFormImpl.newFromConfig(priceMin, priceMax, lat, lng);
 
     // API call
-    let responseData = await hotpepperApi.searchShops(hotpepperApiFormImpl.toApi());
+    const hotpepperApiParamsList = hotpepperApiFormImpl.toApi();
+    const responseData = Promise.all(hotpepperApiParamsList.map(param => hotpepperApi.searchShop(param)));
+    const hotpepperShopResponseListImpl = await HotpepperShopResponseListImpl.newFromResponse(responseData);
+    const selectedShops = await hotpepperShopResponseListImpl.selectShops();
 
-    if (responseData !== null) {
+    if (selectedShops !== null) {
       vscode.window.showInformationMessage('get shops');
-      console.log(responseData);
+      console.log(selectedShops);
     } else {
       vscode.window.showInformationMessage('API error');
     }
