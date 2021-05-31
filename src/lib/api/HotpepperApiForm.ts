@@ -10,8 +10,6 @@ export type HotpepperApiForm = {
   count: number,
 };
 
-// ToDo:
-//       - 100個取得して、そこからランダムに4個選択する
 export class HotpepperApiFormImpl {
   private apiForm: Array<HotpepperApiForm>;
   private budgetMin: number = 0;
