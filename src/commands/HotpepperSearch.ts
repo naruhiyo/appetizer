@@ -30,7 +30,7 @@ export function searchHotpepper(c: vscode.ExtensionContext): { dispose: any } {
     let hotpepperApiFormImpl = HotpepperApiFormImpl.newFromConfig(priceMin, priceMax, lat, lng);
 
     // API call
-    let responseData = await hotpepperApi.searchShops(hotpepperApiFormImpl.getApiForm());
+    let responseData = await hotpepperApi.searchShops(hotpepperApiFormImpl.toApi());
 
     if (responseData !== null) {
       vscode.window.showInformationMessage('get shops');

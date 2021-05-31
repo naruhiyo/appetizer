@@ -14,31 +14,39 @@ export type HotpepperApiForm = {
 //       - 100個取得して、そこからランダムに4個選択する
 export class HotpepperApiFormImpl {
   private apiForm: Array<HotpepperApiForm>;
+  private budgetMin: number = 0;
+  private budgetMax: number = 0;
+  private lat: number = 0;
+  private lng: number = 0;
 
   constructor() {
     this.apiForm = [];
   }
 
-  public getApiForm() {
-    return this.apiForm;
-  }
-
   public static newFromConfig(budgetMin: number, budgetMax: number, lat: number, lng: number): HotpepperApiFormImpl {
     const hotpepperApiFormImpl: HotpepperApiFormImpl = new HotpepperApiFormImpl();
+    hotpepperApiFormImpl.budgetMin = budgetMin;
+    hotpepperApiFormImpl.budgetMax = budgetMax;
+    hotpepperApiFormImpl.lat = lat;
+    hotpepperApiFormImpl.lng = lng;
+    return hotpepperApiFormImpl;
+  }
+
+  public toApi(): Array<HotpepperApiForm> {
     const matchedBudget = BudgetList.filter(budget => {
-      return budgetMin <= budget.cap && budget.floor <= budgetMax;
+      return this.budgetMin <= budget.cap && budget.floor <= this.budgetMax;
     });
     console.log('matchedBudget:', matchedBudget);
     const countMax = 100;
     const count = Math.floor(countMax / matchedBudget.length);
-    hotpepperApiFormImpl.apiForm = matchedBudget.map(budget => {
+    this.apiForm = matchedBudget.map(budget => {
       return {
         budget: budget.code,
-        lat: lat,
-        lng: lng,
+        lat: this.lat,
+        lng: this.lng,
         count: count,
       }
     });
-    return hotpepperApiFormImpl;
+    return this.apiForm;
   }
 }
