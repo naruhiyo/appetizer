@@ -2,7 +2,6 @@ import * as vscode from 'vscode';
 import { HotpepperApi } from '../lib/api/HotpepperApi';
 import { HotpepperApiForm, HotpepperApiFormImpl } from '../lib/api/HotpepperApiForm';
 import { GeneralConfigImpl, GeneralConfig } from '../lib';
-import { prependListener } from 'process';
 import { HotpepperShopResponseListImpl } from "../lib/model/HotpepperShopResponseList";
 
 export function searchHotpepper(c: vscode.ExtensionContext): { dispose: any } {
