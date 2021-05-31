@@ -24,6 +24,7 @@ export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
     budget: "B001",
     lat: 35.6198513,
     lng: 139.7281892,
+    count: 30,
   };
 
   // API
