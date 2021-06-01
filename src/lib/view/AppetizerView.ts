@@ -26,8 +26,8 @@ export class AppetizerView extends ViewBuilderImpl {
     this.html = template.replace(/styleYield/i, `<style>${css}</style>`);
   }
 
-  injectComponent(responseModel: HotpepperShopImpl): void {
-    const body: string = responseModel.shopList.map(
+  injectComponent(responseModel: any): void {
+    const body: string = responseModel.map(
         (shop: HotpepperShop): string =>
           `<div class="appetizer-field card">
             <div class="card-img"><img src="${shop.photo}" alt="sample-img" /></div>

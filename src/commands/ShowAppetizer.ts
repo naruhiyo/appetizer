@@ -23,7 +23,7 @@ export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
   // set timer
   scheduleJob(hungryTime!, async () => {
     // API call
-    const response: HotpepperShopImpl | null = await service.getAppetizer();
+    const response: Object | null = await service.getAppetizer();
 
     if (response === null) {
       return;

@@ -79,27 +79,23 @@
         "appetizerConf.general.lat": {
           "type": "number",
           "default": 0.0,
-          "minimum": 20,
-          "maximum": 46,
           "description": "Station Latitude in Japan"
         },
         "appetizerConf.general.lng": {
           "type": "number",
           "default": 0.0,
-          "minimum": 122,
-          "maximum": 154,
           "description": "Station Langitude in Japan"
         },
         "appetizerConf.general.minPrice": {
           "type": "number",
-          "default": 0,
+          "default": 100,
           "minimum": 0,
           "maximum": 30000,
           "description": "Food min price"
         },
         "appetizerConf.general.maxPrice": {
           "type": "number",
-          "default": 0,
+          "default": 1000,
           "minimum": 0,
           "maximum": 30000,
           "description": "Food max price"
