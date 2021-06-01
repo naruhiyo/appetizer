@@ -8,7 +8,7 @@ export type GeneralConfig = {
     lat: number | null | undefined;
     lng: number | null | undefined;
   }
-  priceRange: string | null | undefined;
+  priceRange: number[] | null | undefined;
   searchStoreRange: number | null | undefined;
 };
 

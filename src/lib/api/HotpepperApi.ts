@@ -15,9 +15,7 @@ export class HotpepperApi {
     this.apiKey = apiKeyImpl.getHotpepperApiKey() as string;
   }
 
-  async searchShops(
-    hotpepperApiParams: HotpepperApiForm
-  ): Promise<HotpepperShopImpl | null> {
+  public async searchShop(hotpepperApiParams: HotpepperApiForm): Promise<Object | null> {
     // execute api
     try {
       const response = await axios.get(this.HOTPEPPER_API_ENDPOINT, {
@@ -28,12 +26,7 @@ export class HotpepperApi {
         },
       });
 
-      if (response.data === null) {
-        return null;
-      }
-
-      // create response model
-      return HotpepperShopImpl.newFromApiResponse(response.data);
+      return response.data.results.shop;
     } catch (error) {
       console.log(error);
       return null;
