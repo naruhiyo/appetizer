@@ -3,7 +3,7 @@ import { ViewBuilderImpl } from "./ViewBuilder";
 import * as vscode from "vscode";
 import appetizerTemplate from "./appetizer.template.html";
 import appetizerStyle from "./appetizer.scss";
-import { HotpepperShopImpl, HotpepperShop } from "../model/HotpepperShopModel";
+import { HotpepperShop } from "../model/HotpepperShopModel";
 
 export class AppetizerView extends ViewBuilderImpl {
   private static VIEW_TYPE: string = "showAppetizer";
@@ -26,8 +26,8 @@ export class AppetizerView extends ViewBuilderImpl {
     this.html = template.replace(/styleYield/i, `<style>${css}</style>`);
   }
 
-  injectComponent(responseModel: any): void {
-    const body: string = responseModel.map(
+  injectComponent(shopList: Array<HotpepperShop>): void {
+    const body: string = shopList.map(
         (shop: HotpepperShop): string =>
           `<div class="appetizer-field card">
             <div class="card-img"><img src="${shop.photo}" alt="sample-img" /></div>

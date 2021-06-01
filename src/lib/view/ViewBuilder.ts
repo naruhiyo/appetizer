@@ -1,9 +1,9 @@
 import * as vscode from "vscode";
-import { HotpepperShopImpl } from '../model/HotpepperShopModel';
+import { HotpepperShop } from '../model/HotpepperShopModel';
 
 export interface ViewBuilder {
   buildHtml(): void;
-  injectComponent(responseModel: HotpepperShopImpl): void;
+  injectComponent(shopList: Array<HotpepperShop>): void;
   createWebViewPanel(): vscode.WebviewPanel;
 }
 
@@ -42,7 +42,7 @@ export abstract class ViewBuilderImpl implements ViewBuilder {
     throw new Error("Method not implemented.");
   }
 
-  injectComponent(responseModel: HotpepperShopImpl): void {
+  injectComponent(shopList: Array<HotpepperShop>): void {
     throw new Error("Method not implemented.");
   }
 

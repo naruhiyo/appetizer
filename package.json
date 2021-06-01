@@ -95,7 +95,7 @@
         },
         "appetizerConf.general.maxPrice": {
           "type": "number",
-          "default": 1000,
+          "default": 200,
           "minimum": 0,
           "maximum": 30000,
           "description": "Food max price"
