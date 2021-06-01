@@ -5,18 +5,18 @@ import { GeneralConfigImpl, GeneralConfig } from '../../lib';
  * Hot Pepper API検索用のパラメーター
  */
 export type HotpepperApiForm = {
-  budget: string | null | undefined,
-  lat: number | null | undefined,
-  lng: number | null | undefined,
+  budget: string,
+  lat: number,
+  lng: number,
   count: number,
 };
 
 export class HotpepperApiFormImpl {
-  private apiForm: Array<HotpepperApiForm>;
-  private budgetMin: number = 0;
-  private budgetMax: number = 0;
-  private lat: number | null | undefined = 0;
-  private lng: number | null | undefined = 0;
+  public apiForm: Array<HotpepperApiForm>;
+  public budgetMin: number = 0;
+  public budgetMax: number = 0;
+  public lat: number = 0;
+  public lng: number = 0;
 
   constructor() {
     this.apiForm = [];
@@ -28,9 +28,8 @@ export class HotpepperApiFormImpl {
     const generalConf: GeneralConfig = generalConfigImpl.getGeneralConf();
 
     // parameter 作成
-    const priceRange = generalConf.priceRange?.sort();
-    hotpepperApiFormImpl.budgetMin = priceRange === undefined ? 0 : priceRange[0];
-    hotpepperApiFormImpl.budgetMax = priceRange === undefined ? hotpepperApiFormImpl.budgetMin : priceRange[1];
+    hotpepperApiFormImpl.budgetMin = generalConf.minPrice;
+    hotpepperApiFormImpl.budgetMax = generalConf.maxPrice;
     hotpepperApiFormImpl.lat = generalConf.latLng.lat;
     hotpepperApiFormImpl.lng = generalConf.latLng.lng;
     return hotpepperApiFormImpl;
@@ -49,7 +48,7 @@ export class HotpepperApiFormImpl {
         lat: this.lat,
         lng: this.lng,
         count: count,
-      }
+      };
     });
     return this.apiForm;
   }

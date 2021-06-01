@@ -2,7 +2,7 @@ type Budget = {
   code: string,
   floor: number,
   cap: number,
-}
+};
 
 /**
  * 検索用ディナー予算マスタAPIを叩いて取得した情報
@@ -76,4 +76,4 @@ export const BudgetList: Array<Budget> = [
     floor: 30001,
     cap: Number.MAX_SAFE_INTEGER,
   },
-]
+];
