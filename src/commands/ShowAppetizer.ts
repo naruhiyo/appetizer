@@ -3,9 +3,9 @@ import { scheduleJob } from "node-schedule";
 import {
   HungryTime,
   HungryTimeImpl,
-  HotpepperApiForm,
-  HotpepperApi,
   AppetizerView,
+  AppetizerService,
+  HotpepperShopImpl
 } from "../lib";
 
 export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
@@ -15,29 +15,19 @@ export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
 
   // get config
   const hungryTime: HungryTime = HungryTimeImpl.getHungryTime();
-
   // get view
   const appetizerView: AppetizerView = new AppetizerView();
-  appetizerView.buildHtml();
-
-  const params: HotpepperApiForm = {
-    budget: "B001",
-    lat: 35.6198513,
-    lng: 139.7281892,
-    count: 30,
-  };
-
-  // API
-  const hotpepperApi: HotpepperApi = new HotpepperApi();
+  // get service
+  const service: AppetizerService = new AppetizerService();
 
   // set timer
   scheduleJob(hungryTime!, async () => {
     // API call
-    // const responseData: Object | null = await hotpepperApi.searchShops(params);
+    const response: HotpepperShopImpl | null = await service.getAppetizer();
 
-    // if (responseData === null) {
-    //   return;
-    // }
+    if (response === null) {
+      return;
+    }
 
     const selection = await vscode.window.showInformationMessage(
       WELLCOME_MESSAGE,
@@ -48,10 +38,10 @@ export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
       return vscode.window.showInformationMessage(NEXT_TIME);
     }
 
-    const hoge: any = {};
+    // create html
+    await appetizerView.buildHtml(); 
     // create component
-    await appetizerView.injectComponent(hoge);
-
+    await appetizerView.injectComponent(response);
     // open web view
     await appetizerView.createWebViewPanel();
   });

@@ -64,21 +64,31 @@
       "title": "appetizerConfiguration",
       "description": "User extension",
       "properties": {
+        "appetizerConf.general.prefecture": {
+          "type": "string",
+          "default": "東京都",
+          "pattern": "[都道府県]",
+          "patternErrorMessage": "Please enter `***[都,道,府,県]` in Japanese.",
+          "description": "Your prefecture"
+        },
         "appetizerConf.general.nearStation": {
           "type": "string",
-          "default": "",
-          "description": "Your favorite station"
+          "default": "東京",
+          "description": "Your favorite station name"
         },
         "appetizerConf.general.lat": {
           "type": "number",
-          "default": 0,
-          "pattern": ".+¥..*",
-          "description": "Station Latitude"
+          "default": 0.0,
+          "minimum": 20,
+          "maximum": 46,
+          "description": "Station Latitude in Japan"
         },
         "appetizerConf.general.lng": {
           "type": "number",
-          "default": 0,
-          "description": "Station Langitude"
+          "default": 0.0,
+          "minimum": 122,
+          "maximum": 154,
+          "description": "Station Langitude in Japan"
         },
         "appetizerConf.general.minPrice": {
           "type": "number",
