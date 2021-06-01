@@ -1,10 +1,10 @@
-import { HotpepperShopImpl } from "../model/HotpepperShopModel";
+import { HotpepperShop, HotpepperShopImpl } from "../model/HotpepperShopModel";
 import { GeneralConfigImpl, GeneralConfig } from "../model/GeneralConfigModel";
 import { HotpepperApi } from "../api/HotpepperApi";
 import { HeartRailsExpressApi } from "../api/HeartRailsExpressApi";
 import { HeartRailsExpressFormImpl } from "../api/HeartRailsExpressForm";
 import { HeartRailsExpressStationImpl } from "../model/HeartRailsExpressStationModel";
-import { HotpepperApiFormImpl } from "../api/HotpepperApiForm";
+import { HotpepperApiForm, HotpepperApiFormImpl } from "../api/HotpepperApiForm";
 import { HotpepperShopResponseListImpl } from "../model/HotpepperShopResponseList";
 
 export class AppetizerService {
@@ -22,7 +22,7 @@ export class AppetizerService {
     this.heartRailsExpressApi = new HeartRailsExpressApi();
   }
 
-  public async getAppetizer(): Promise<Object | null> {
+  public async getAppetizer(): Promise<Array<HotpepperShop> | null> {
     const hotpepperApiFormImpl: HotpepperApiFormImpl = HotpepperApiFormImpl.newFromConfig();
 
     if (!this.inJapanLatLng(hotpepperApiFormImpl.lat, hotpepperApiFormImpl.lng)) {
@@ -43,12 +43,14 @@ export class AppetizerService {
     }
 
     // API call
-    const hotpepperApiParamsList = hotpepperApiFormImpl.toApi();
-    const shopListResponse = Promise.all(hotpepperApiParamsList.map(param => this.hotpepperApi.searchShop(param)));
-    const hotpepperShopResponseListImpl = await HotpepperShopResponseListImpl.newFromResponse(shopListResponse);
-    const selectedShops = await hotpepperShopResponseListImpl.selectShops();
+    const hotpepperApiParamsList: Array<HotpepperApiForm> = hotpepperApiFormImpl.toApi();
+    const shopListResponse: Array<HotpepperShopImpl | null> = await Promise.all(hotpepperApiParamsList.map(param => this.hotpepperApi.searchShop(param)));
 
-    if (selectedShops === null) {
+    // 呼び出し結果を一つの配列にマージ
+    const hotpepperShopResponseListImpl: HotpepperShopResponseListImpl = await HotpepperShopResponseListImpl.newFromResponse(shopListResponse);
+    const selectedShops: Array<HotpepperShop> = await hotpepperShopResponseListImpl.selectShops();
+
+    if (selectedShops.length < 1) {
       return null;
     }
 

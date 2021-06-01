@@ -12,7 +12,7 @@ export function searchHotpepper(c: vscode.ExtensionContext): { dispose: any } {
 
     // API call
     const hotpepperApiParamsList = hotpepperApiFormImpl.toApi();
-    const responseData = Promise.all(hotpepperApiParamsList.map(param => hotpepperApi.searchShop(param)));
+    const responseData = await Promise.all(hotpepperApiParamsList.map(param => hotpepperApi.searchShop(param)));
     const hotpepperShopResponseListImpl = await HotpepperShopResponseListImpl.newFromResponse(responseData);
     const selectedShops = await hotpepperShopResponseListImpl.selectShops();
 

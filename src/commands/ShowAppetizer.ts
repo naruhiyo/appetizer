@@ -5,7 +5,7 @@ import {
   HungryTimeImpl,
   AppetizerView,
   AppetizerService,
-  HotpepperShopImpl
+  HotpepperShop
 } from "../lib";
 
 export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
@@ -23,9 +23,9 @@ export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
   // set timer
   scheduleJob(hungryTime!, async () => {
     // API call
-    const response: Object | null = await service.getAppetizer();
+    const shopList: Array<HotpepperShop> | null = await service.getAppetizer();
 
-    if (response === null) {
+    if (shopList === null) {
       return;
     }
 
@@ -41,7 +41,7 @@ export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
     // create html
     await appetizerView.buildHtml(); 
     // create component
-    await appetizerView.injectComponent(response);
+    await appetizerView.injectComponent(shopList);
     // open web view
     await appetizerView.createWebViewPanel();
   });
