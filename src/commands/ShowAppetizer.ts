@@ -5,7 +5,7 @@ import {
   HungryTimeImpl,
   AppetizerView,
   AppetizerService,
-  HotpepperShop
+  HotpepperShop,
 } from "../lib";
 
 export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
@@ -39,7 +39,7 @@ export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
     }
 
     // create html
-    await appetizerView.buildHtml(); 
+    await appetizerView.buildHtml();
     // create component
     await appetizerView.injectComponent(shopList);
     // open web view
