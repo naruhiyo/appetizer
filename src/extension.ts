@@ -6,12 +6,7 @@ export function activate(context: vscode.ExtensionContext) {
 	// コマンドを登録する
 	// * コマンドは package.json に記載する必要がある
 	const disposables: { dispose: any }[] = [
-		commands.showImage(context),
-		commands.showCurrentTime(context),
-		commands.helloWorld(context),	
-		commands.configurationManager(context),
-		commands.searchGoogle(context),
-		commands.searchHotpepper(context),
+		commands.showAppetizer(context),
 		commands.showAppetizer(context),
 	];
 

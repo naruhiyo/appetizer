@@ -30,8 +30,6 @@ export class HotpepperApiFormImpl {
     // parameter 作成
     hotpepperApiFormImpl.budgetMin = generalConf.minPrice;
     hotpepperApiFormImpl.budgetMax = generalConf.maxPrice;
-    hotpepperApiFormImpl.lat = generalConf.latLng.lat;
-    hotpepperApiFormImpl.lng = generalConf.latLng.lng;
     return hotpepperApiFormImpl;
   }
 
@@ -39,7 +37,6 @@ export class HotpepperApiFormImpl {
     const matchedBudget = BudgetList.filter(budget => {
       return this.budgetMin <= budget.cap && budget.floor <= this.budgetMax;
     });
-    console.log('matchedBudget:', matchedBudget);
     const countMax = 100;
     const count = Math.floor(countMax / matchedBudget.length);
     this.apiForm = matchedBudget.map(budget => {
