@@ -14,52 +14,7 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "appetizer.helloWorld",
-        "title": "Hello World",
-        "category": "test"
-      },
-      {
-        "command": "appetizer.showImage",
-        "title": "Get and show Image on appetizer",
-        "category": "test"
-      },
-      {
-        "command": "appetizer.showCurrentTime",
-        "title": "Show current time",
-        "category": "test"
-      },
-      {
-        "command": "appetizer.readConfig",
-        "title": "Read config",
-        "category": "test"
-      },
-      {
-        "command": "appetizer.searchGoogle",
-        "title": "Search Test Google",
-        "category": "test"
-      },
-      {
-        "command": "appetizer.searchHotpepper",
-        "title": "Search Test Hot Pepper",
-        "category": "test"
-      }
-    ],
-    "menus": {
-      "editor/title": [
-        {
-          "command": "appetizer.helloWorld",
-          "group": "navigation"
-        }
-      ],
-      "editor/context": [
-        {
-          "command": "appetizer.helloWorld",
-          "group": "navigation"
-        }
-      ]
-    },
+    "commands": [],
     "configuration": {
       "title": "appetizerConfiguration",
       "description": "User extension",
@@ -75,16 +30,6 @@
           "type": "string",
           "default": "東京",
           "description": "Your favorite station name"
-        },
-        "appetizerConf.general.lat": {
-          "type": "number",
-          "default": 0.0,
-          "description": "Station Latitude in Japan"
-        },
-        "appetizerConf.general.lng": {
-          "type": "number",
-          "default": 0.0,
-          "description": "Station Langitude in Japan"
         },
         "appetizerConf.general.minPrice": {
           "type": "number",

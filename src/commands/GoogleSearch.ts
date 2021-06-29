@@ -12,7 +12,8 @@ export function searchGoogle(c: vscode.ExtensionContext): { dispose: any } {
 
     // parameter 作成
     const params: GooglePlaceApiForm = {
-      location: `${generalConf.latLng.lat},${generalConf.latLng.lng}`,
+      // location: `${generalConf.latLng.lat},${generalConf.latLng.lng}`,
+      location: `1,1`,
       radious: 300,
       language: 'ja',
       types: 'restaurant'
