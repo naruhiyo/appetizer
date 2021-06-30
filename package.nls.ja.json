@@ -5,6 +5,5 @@
   "config.properties.appetizer.station.default": "東京",
   "config.properties.appetizer.station.description": "最寄り駅",
   "config.properties.appetizer.minPrice.description": "最低価格",
-  "config.properties.appetizer.maxPrice.description": "最高価格",
-  "config.properties.appetizer.searchStoreRange.description": "検索範囲(km)"
+  "config.properties.appetizer.maxPrice.description": "最高価格"
 }

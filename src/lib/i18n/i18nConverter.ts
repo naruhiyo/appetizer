@@ -1,5 +1,8 @@
 import i18nJson from "./i18n.json";
 
+/**
+ * 他言語変換ファイル
+ */
 export class I18nConverter {
   private i18nTextObject: any | null = null;
 

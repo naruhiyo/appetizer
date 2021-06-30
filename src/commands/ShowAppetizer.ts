@@ -18,6 +18,7 @@ export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
   const WELLCOME_MESSAGE = i18nConverter.localize('appetizer.popup.welcomeMessage');
   const CONTINUE_BUTTON = i18nConverter.localize('appetizer.popup.continueButton');
   const CANCEL_BUTTON = i18nConverter.localize('appetizer.popup.cancelButton');
+  const ERROR_MESSAGE = i18nConverter.localize('error.notFound.store');
 
   // get config
   const hungryTime: HungryTime = HungryTimeImpl.getHungryTime();
@@ -32,13 +33,14 @@ export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
     const shopList: Array<HotpepperShop> | null = await service.getAppetizer();
 
     if (shopList === null) {
-      return;
+      return vscode.window.showInformationMessage(ERROR_MESSAGE);
     }
 
     const selection = await vscode.window.showInformationMessage(
       WELLCOME_MESSAGE,
       CONTINUE_BUTTON
     );
+
     if (selection !== CONTINUE_BUTTON) {
 
       return vscode.window.showInformationMessage(CANCEL_BUTTON);
