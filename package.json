@@ -21,36 +21,36 @@
       "properties": {
         "appetizerConf.general.prefecture": {
           "type": "string",
-          "default": "東京都",
+          "default": "%config.properties.appetizer.prefecture.default%",
           "pattern": "[都道府県]",
-          "patternErrorMessage": "Please enter `***[都,道,府,県]` in Japanese.",
-          "description": "Your prefecture"
+          "patternErrorMessage": "%config.properties.appetizer.prefecture.error.message%",
+          "description": "%config.properties.appetizer.prefecture.description%"
         },
         "appetizerConf.general.nearStation": {
           "type": "string",
-          "default": "東京",
-          "description": "Your favorite station name"
+          "default": "%config.properties.appetizer.station.default%",
+          "description": "%config.properties.appetizer.station.description%"
         },
         "appetizerConf.general.minPrice": {
           "type": "number",
           "default": 100,
           "minimum": 0,
           "maximum": 30000,
-          "description": "Food min price"
+          "description": "%config.properties.appetizer.minPrice.description%"
         },
         "appetizerConf.general.maxPrice": {
           "type": "number",
           "default": 200,
           "minimum": 0,
           "maximum": 30000,
-          "description": "Food max price"
+          "description": "%config.properties.appetizer.maxPrice.description%"
         },
         "appetizerConf.general.searchStoreRange": {
           "type": "number",
           "default": 5,
           "minimum": 0,
           "maximum": 10,
-          "description": "Search radious"
+          "description": "%config.properties.appetizer.searchStoreRange.description%"
         }
       }
     }

@@ -1,0 +1,10 @@
+{
+  "config.properties.appetizer.prefecture.default": "東京都",
+  "config.properties.appetizer.prefecture.error.message": "都道府県を入力してください。",
+  "config.properties.appetizer.prefecture.description": "居住している都道府県",
+  "config.properties.appetizer.station.default": "東京",
+  "config.properties.appetizer.station.description": "最寄り駅",
+  "config.properties.appetizer.minPrice.description": "最低価格",
+  "config.properties.appetizer.maxPrice.description": "最高価格",
+  "config.properties.appetizer.searchStoreRange.description": "検索範囲(km)"
+}

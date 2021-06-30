@@ -1,0 +1,10 @@
+{
+  "config.properties.appetizer.prefecture.default": "東京都",
+  "config.properties.appetizer.prefecture.error.message": "Please enter `***[都,道,府,県]` in Japanese.",
+  "config.properties.appetizer.prefecture.description": "Your prefecture",
+  "config.properties.appetizer.station.default": "東京",
+  "config.properties.appetizer.station.description": "Your nearby station",
+  "config.properties.appetizer.minPrice.description": "Food min price",
+  "config.properties.appetizer.maxPrice.description": "Food max price",
+  "config.properties.appetizer.searchStoreRange.description": "Search radious(km)"
+}
