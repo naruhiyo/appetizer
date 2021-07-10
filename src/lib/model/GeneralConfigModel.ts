@@ -23,20 +23,34 @@ export class GeneralConfigImpl {
   }
 
   getGeneralConf () : GeneralConfig {
-    // 駅名に`駅`が含まれる場合取り除く（HeartRails APIが許容していないため）
-    let nearStation: string = this.generalConf.get('nearStation')!;
+    let prefecture: string | undefined = this.generalConf.get('prefecture');
+    let nearStation: string | undefined = this.generalConf.get('nearStation');
+    let minPrice: number | undefined = this.generalConf.get('minPrice');
+    let maxPrice: number | undefined = this.generalConf.get('maxPrice');
+    let searchStoreRange: number | undefined = this.generalConf.get('searchStoreRange');
 
-    if (nearStation.endsWith(this.NG_WORD)) {
-      // 末尾一文字を削除
-      nearStation = nearStation.slice(0, -1);
+    // undefined型を弾くためにチェック
+    if (typeof (prefecture) === 'undefined') {
+      prefecture = '';
     }
-
+    if (typeof (nearStation) === 'undefined') {
+      nearStation = '';
+    }
+    if (typeof (minPrice) === 'undefined') {
+      minPrice = 0;
+    }
+    if (typeof (maxPrice) === 'undefined') {
+      maxPrice = 0;
+    }
+    if (typeof (searchStoreRange) === 'undefined') {
+      searchStoreRange = 0;
+    }
     return {
-      prefecture: this.generalConf.get('prefecture')!,
+      prefecture: prefecture,
       nearStation: nearStation,
-      minPrice: this.generalConf.get('minPrice')!,
-      maxPrice: this.generalConf.get('maxPrice')!,
-      searchStoreRange: this.generalConf.get('searchStoreRange')!
+      minPrice: minPrice,
+      maxPrice: maxPrice,
+      searchStoreRange: searchStoreRange
     };
   }
 }

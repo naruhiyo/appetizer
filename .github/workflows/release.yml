@@ -1,0 +1,29 @@
+name: Automatic release
+on:
+  # Github Actions起動のコマンド
+  push: 
+    # Github Actions起動のトリガーブランチ
+    branches:
+      - develop
+jobs:
+  release:
+    name: Run build and release
+    runs-on: ubuntu-latest # using linux OS
+    steps:
+      # git switch -c
+      - name: Checkout branch
+        uses: actions/checkout@v2
+
+      # .envの作成と書き込み
+      - name: Create `.env`
+        run: |
+          touch .env &&
+          echo HUNGRY_TIME="${{ secrets.ACTIONS_HUNGRY_TIME }}" >> .env  &&
+          echo HOTPEPPER_API_KEY="${{ secrets.ACTIONS_HOTPEPPER_API_KEY }}" >> .env
+
+      # MarketPlaceへのリリース
+      - uses: lannonbr/vsce-action@master
+        with:
+          args: "publish -p $VSCE_TOKEN"
+        env:
+          VSCE_TOKEN: ${{ secrets.ACTIONS_VSCODE_PERSONAL_ACCESS_TOKEN }}
