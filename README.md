@@ -4,7 +4,7 @@
 [![Lang: NodeJS](https://img.shields.io/badge/Lang-NodeJS_14.15.4-blue.svg)]()
 [![Lang: TypeScript](https://img.shields.io/badge/Lang-TypeScript%204.1.2-blue.svg)]()
 
-At lunchtime and dinner time, *Appetizer* introduce you to a restaurant near the station you specify.
+At lunchtime and dinnertime, *Appetizer* introduce you to a restaurant near the station you specify.
 
 <img src="https://user-images.githubusercontent.com/28133383/125632081-7d469949-adce-4232-8266-cead89e580db.gif" width="80%">
 
