@@ -1,7 +1,7 @@
 {
   "name": "appetizer",
   "displayName": "appetizer",
-  "description": "",
+  "description": "At lunchtime and dinnertime, *Appetizer* introduce you to a restaurant near the station you specify.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.52.0"
@@ -12,6 +12,17 @@
   "activationEvents": [
     "onStartupFinished"
   ],
+  "keywords": [
+    "restaurant",
+    "recommendation",
+    "suggestion",
+    "lunch",
+    "dinner"
+  ],
+  "galleryBanner": {
+    "color": "#272729",
+    "theme": "dark"
+  },
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [],
