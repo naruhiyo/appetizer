@@ -5,6 +5,5 @@
   "config.properties.appetizer.station.default": "東京",
   "config.properties.appetizer.station.description": "Your nearby station",
   "config.properties.appetizer.minPrice.description": "Food min price",
-  "config.properties.appetizer.maxPrice.description": "Food max price",
-  "config.properties.appetizer.searchStoreRange.description": "Search range(km)"
+  "config.properties.appetizer.maxPrice.description": "Food max price"
 }

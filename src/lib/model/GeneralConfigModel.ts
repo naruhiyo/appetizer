@@ -14,6 +14,7 @@ export type GeneralConfig = {
  * 共通Configのデータモデル
  */
 export class GeneralConfigImpl {
+  private NG_WORD = '駅';
   private generalConf: WorkspaceConfiguration;
 
   constructor () {
@@ -22,9 +23,17 @@ export class GeneralConfigImpl {
   }
 
   getGeneralConf () : GeneralConfig {
+    // 駅名に`駅`が含まれる場合取り除く（HeartRails APIが許容していないため）
+    let nearStation: string = this.generalConf.get('nearStation')!;
+
+    if (nearStation.endsWith(this.NG_WORD)) {
+      // 末尾一文字を削除
+      nearStation = nearStation.slice(0, -1);
+    }
+
     return {
       prefecture: this.generalConf.get('prefecture')!,
-      nearStation: this.generalConf.get('nearStation')!,
+      nearStation: nearStation,
       minPrice: this.generalConf.get('minPrice')!,
       maxPrice: this.generalConf.get('maxPrice')!,
       searchStoreRange: this.generalConf.get('searchStoreRange')!

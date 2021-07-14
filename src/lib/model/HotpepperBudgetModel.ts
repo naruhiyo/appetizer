@@ -1,4 +1,4 @@
-type Budget = {
+export type Budget = {
   code: string,
   floor: number,
   cap: number,

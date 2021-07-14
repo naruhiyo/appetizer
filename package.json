@@ -44,13 +44,6 @@
           "minimum": 0,
           "maximum": 30000,
           "description": "%config.properties.appetizer.maxPrice.description%"
-        },
-        "appetizerConf.general.searchStoreRange": {
-          "type": "number",
-          "default": 5,
-          "minimum": 0,
-          "maximum": 10,
-          "description": "%config.properties.appetizer.searchStoreRange.description%"
         }
       }
     }
