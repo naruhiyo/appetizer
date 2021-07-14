@@ -10,6 +10,7 @@ import { HeartRailsExpressApi } from "./api/HeartRailsExpressApi";
 import { HeartRailsExpressForm } from "./api/HeartRailsExpressForm";
 import { AppetizerView } from './view/AppetizerView';
 import { AppetizerService } from "./service/AppetizerService";
+import { I18nConverter } from "./i18n/i18nConverter";
 
 export {
   ApiKeyImpl,
@@ -27,5 +28,6 @@ export {
   HotpepperApiForm,
   HeartRailsExpressApi,
   HeartRailsExpressForm,
-  AppetizerService
+  AppetizerService,
+  I18nConverter
 };

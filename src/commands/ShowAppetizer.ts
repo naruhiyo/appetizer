@@ -6,12 +6,18 @@ import {
   AppetizerView,
   AppetizerService,
   HotpepperShop,
+  I18nConverter
 } from "../lib";
 
 export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
-  const APPETIZER_BUTTON = "Yes!";
-  const WELLCOME_MESSAGE = "An appetizer has come! Am I hungry?";
-  const NEXT_TIME = "See you next time.";
+  // get i18n
+  const vscodeNlsConfig = JSON.parse(process.env.VSCODE_NLS_CONFIG as string);
+  const i18nConverter = new I18nConverter(vscodeNlsConfig.locale);
+
+  // get text from i18n
+  const WELLCOME_MESSAGE = i18nConverter.localize('appetizer.popup.welcomeMessage');
+  const CONTINUE_BUTTON = i18nConverter.localize('appetizer.popup.continueButton');
+  const CANCEL_BUTTON = i18nConverter.localize('appetizer.popup.cancelButton');
 
   // get config
   const hungryTime: HungryTime = HungryTimeImpl.getHungryTime();
@@ -31,11 +37,11 @@ export function showAppetizer(c: vscode.ExtensionContext): { dispose: any } {
 
     const selection = await vscode.window.showInformationMessage(
       WELLCOME_MESSAGE,
-      APPETIZER_BUTTON
+      CONTINUE_BUTTON
     );
+    if (selection !== CONTINUE_BUTTON) {
 
-    if (selection !== APPETIZER_BUTTON) {
-      return vscode.window.showInformationMessage(NEXT_TIME);
+      return vscode.window.showInformationMessage(CANCEL_BUTTON);
     }
 
     // create html

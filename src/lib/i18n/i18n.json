@@ -1,0 +1,38 @@
+{
+  "ja": {
+    "appetizer": {
+      "popup": {
+        "welcomeMessage": "そろそろご飯にしませんか？",
+        "continueButton": "する！",
+        "cancelButton": "引き続き頑張ってください！"
+      }
+    },
+    "error": {
+      "invalid": ":attributeを設定してください",
+      "notFound": {
+        "store": "ご指定の条件を満たすお店はありませんでした"
+      },
+      "api": {
+        "common": "通信に失敗しました"
+      }
+    }
+  },
+  "en": {
+    "appetizer": {
+      "popup": {
+        "welcomeMessage": "そろそろご飯にしませんか？",
+        "continueButton": "する！",
+        "cancelButton": "引き続き頑張ってください！"
+      }
+    },
+    "error": {
+      "invalid": ":attributeを設定してください",
+      "notFound": {
+        "store": "ご指定の条件を満たすお店はありませんでした"
+      },
+      "api": {
+        "common": "通信に失敗しました"
+      }
+    }
+  }
+}

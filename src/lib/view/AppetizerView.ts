@@ -32,11 +32,11 @@ export class AppetizerView extends ViewBuilderImpl {
           `<div class="appetizer-field card">
             <div class="card-img"><img src="${shop.photo}" alt="sample-img" /></div>
             <div class="card-title">
-              <span class="shop-genre">${shop.genre}</span>
-              <span class="shop-budge-badge">${shop.budget.name}</span>
+              <span class="shop-name">${shop.name}</span>
             </div>
             <div class="card-body">
-              <span class="shop-name">${shop.name}</span>
+              <span class="shop-genre">${shop.genre}</span>
+              <span class="shop-budge-badge">${shop.budget.name}</span>
             </div>
             <div class="card-footer">
               <a href="${shop.url}" target="_blank">To shop</a>
