@@ -22,8 +22,14 @@ export class GeneralConfigImpl {
   }
 
   getGeneralConf () : GeneralConfig {
+    // 駅名に`駅`が含まれる場合取り除く（HeartRails APIが許容していないため）
+    let nearStation: string = this.generalConf.get('nearStation')!;
+
+    if (nearStation.endsWith(this.NG_WORD)) {
+      // 末尾一文字を削除
+      nearStation = nearStation.slice(0, -1);
+    }
     let prefecture: string | undefined = this.generalConf.get('prefecture');
-    let nearStation: string | undefined = this.generalConf.get('nearStation');
     let minPrice: number | undefined = this.generalConf.get('minPrice');
     let maxPrice: number | undefined = this.generalConf.get('maxPrice');
 
