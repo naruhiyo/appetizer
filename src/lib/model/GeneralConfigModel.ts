@@ -7,7 +7,6 @@ export type GeneralConfig = {
   nearStation: string;
   minPrice: number;
   maxPrice: number;
-  searchStoreRange: number;
 };
 
 /**
@@ -27,7 +26,6 @@ export class GeneralConfigImpl {
     let nearStation: string | undefined = this.generalConf.get('nearStation');
     let minPrice: number | undefined = this.generalConf.get('minPrice');
     let maxPrice: number | undefined = this.generalConf.get('maxPrice');
-    let searchStoreRange: number | undefined = this.generalConf.get('searchStoreRange');
 
     // undefined型を弾くためにチェック
     if (typeof (prefecture) === 'undefined') {
@@ -42,15 +40,12 @@ export class GeneralConfigImpl {
     if (typeof (maxPrice) === 'undefined') {
       maxPrice = 0;
     }
-    if (typeof (searchStoreRange) === 'undefined') {
-      searchStoreRange = 0;
-    }
+
     return {
       prefecture: prefecture,
       nearStation: nearStation,
       minPrice: minPrice,
-      maxPrice: maxPrice,
-      searchStoreRange: searchStoreRange
+      maxPrice: maxPrice
     };
   }
 }
