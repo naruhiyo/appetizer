@@ -23,6 +23,7 @@
     "color": "#272729",
     "theme": "dark"
   },
+  "license": "SEE LICENSE IN LICENSE",
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [],
